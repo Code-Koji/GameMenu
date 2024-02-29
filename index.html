@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Choice (BETA) </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            transition: background-color 0.3s;
+        }
+        header a:hover {
+            background-color: #555;
+        }
+        .game-choice {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 100px);
+        }
+        .game-choice button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .game-choice button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="https://m.facebook.com/profile.php/?id=100084842475968&name=ProfileActionViewAs">Contact Developer</a>
+        <a href="#">New Office</a>
+        <div>
+            <a href="https://github.com/Code-Koji" target="_blank">GitHub</a>
+            <a href="" target="_blank">Twitter (N/A)</a>
+            <a href="https://www.facebook.com/profile.php?id=100084842475968&mibextid=JRoKGi" target="_blank">Facebook</a>
+            <a href="https://t.me/ZXMaku" target="_blank">Telegram</a>
+        </div>
+    </header>
+    <div class="game-choice">
+        <button onclick="location.href='https://code-koji.github.io/Snake/'">Snake</button>
+        <button onclick="location.href='https://code-koji.github.io/XOX/'">XOX</button>
+    </div>
+    <footer>
+        Made By CodeKoji
+    </footer>
+    <script>
+        const gameChoice = document.querySelector('.game-choice');
+        gameChoice.addEventListener('touchstart', handleTouchStart, false);
+        gameChoice.addEventListener('touchmove', handleTouchMove, false);
+
+        let xDown = null;
+        let yDown = null;
+
+        function handleTouchStart(evt) {
+            xDown = evt.touches[0].clientX;
+            yDown = evt.touches[0].clientY;
+        }
+
+        function handleTouchMove(evt) {
+            if (!xDown || !yDown) {
+                return;
+            }
+
+            let xDiff = xDown - evt.touches[0].clientX;
+            let yDiff = yDown - evt.touches[0].clientY;
+
+            if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                if (xDiff > 0) {
+                    // swipe left
+                    gameChoice.style.transform = 'translateX(-100%)';
+                } else {
+                    // swipe right
+                    gameChoice.style.transform = 'translateX(100%)';
+                }
+            } else {
+                if (yDiff > 0) {
+                    // swipe up
+                } else {
+                    // swipe down
+                }
+            }
+
+            x
